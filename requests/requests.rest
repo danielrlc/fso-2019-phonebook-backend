@@ -1,35 +1,74 @@
-const generateId = () => {
-  return Math.random() * 1000
-}
-
-const generatedId = generateId()
+##################################################
+# GET requests
+##################################################
 
 ###
-# Get all phonebook entries
+# get all phonebook entries
 GET http://localhost:3001/api/persons
 
 ###
-# Get entry with ID 1
+# get entry with ID 1
 GET http://localhost:3001/api/persons/1
 
 ###
-# Try to get entry which doesn't exist
+# try to get entry which doesn't exist
 GET http://localhost:3001/api/persons/99
 
 ###
-# Get number of entries and current date and time
+# get number of entries and current date and time
 GET http://localhost:3001/info
 
-###
-# Delete entry with ID 3
-DELETE http://localhost:3001/api/persons/3
+
+
+
+
+##################################################
+# DELETE requests
+##################################################
 
 ###
-# Create new entry
+# delete entry with ID 3
+DELETE http://localhost:3001/api/persons/3
+
+
+
+
+
+##################################################
+# POST requests
+##################################################
+
+###
+# create new entry
 POST http://localhost:3001/api/persons
 Content-Type: application/json
 
 {
   "name": "Daniel Clarke",
   "number": "040 46777890"
+}
+
+###
+# create new entry with no name or number
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{}
+
+###
+# create new entry with no name
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "number": "040 46777890"
+}
+
+###
+# create new entry with no number
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Daniel Clarke"
 }
