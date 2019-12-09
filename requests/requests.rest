@@ -1,0 +1,35 @@
+const generateId = () => {
+  return Math.random() * 1000
+}
+
+const generatedId = generateId()
+
+###
+# Get all phonebook entries
+GET http://localhost:3001/api/persons
+
+###
+# Get entry with ID 1
+GET http://localhost:3001/api/persons/1
+
+###
+# Try to get entry which doesn't exist
+GET http://localhost:3001/api/persons/99
+
+###
+# Get number of entries and current date and time
+GET http://localhost:3001/info
+
+###
+# Delete entry with ID 3
+DELETE http://localhost:3001/api/persons/3
+
+###
+# Create new entry
+POST http://localhost:3001/api/persons
+Content-Type: application/json
+
+{
+  "name": "Daniel Clarke",
+  "number": "040 46777890"
+}

@@ -1,5 +1,8 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
+
+app.use(bodyParser.json())
 
 let persons = [
   {
@@ -49,6 +52,19 @@ app.get('/info', (request, response) => {
     `<p>Phonebook has info for ${persons.length} people</p>
     <p>${new Date()}</p>`,
   )
+})
+
+const generateId = () => {
+  return Math.floor(Math.random() * 1000000000)
+}
+
+app.post('/api/persons', (request, response) => {
+  const person = {
+    ...request.body,
+    id: generateId(),
+  }
+  persons = persons.concat(person)
+  response.json(person)
 })
 
 const PORT = 3001
